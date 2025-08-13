@@ -124,3 +124,29 @@ h2 {
 .special-dishes-list{
     margin-top: 50px;
 }
+
+.filtered-dishes{
+  ul{display: flex;
+    flex-wrap: wrap;
+    margin-top:30px;
+  }
+  li{
+    background-color: #ffb902;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 30px;
+    margin-right: 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all ease 0.3s;
+
+    &.active{
+      background-color: black;
+    }
+    &:hover{
+      background-color: black;
+    }
+
+  }
+}
