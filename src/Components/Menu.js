@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import Hero from "./Hero.js"
+import SpecialDishes from "./SpecialDishes.jsx"
 
 
 function Menu(){
@@ -17,30 +18,14 @@ function Menu(){
 
     },[])
 
-    console.log(menu);
-
-    let data = menu.map((items)=>{
-        return(
-            <div>
-             <h3>{items.strCategory}</h3>
-            <img src={items.strMealThumb} alt="" />
-
-        </div>
-
-        )
-        
-       
-        
-    })
-
-
-
-
     return(
         <>
         
         
         <Hero />
+        <SpecialDishes specialDishes={menu} />
+
+
         </>
     )
 }
