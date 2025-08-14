@@ -165,3 +165,24 @@ h2 {
     color: white ;
   }
 }
+
+.filtereddishesItem{
+  li {
+      width: 22%; // reduced from 25% to make it smaller
+      text-align: center;
+      list-style: none;
+      background-color:white;
+
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px; // optional for a nice look
+      }
+
+      h2 {
+        font-size: 20px; // smaller heading for li
+        margin-top: 8px;
+      }
+    }
+  
+}

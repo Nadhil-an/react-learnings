@@ -38,7 +38,7 @@ function Menu(){
         <Hero />
         {!loading?<SpecialDishes specialDishes={menu} />:
         <div className="loader">
-            <h2>Loading</h2>
+            <h2>Loading...</h2>
         </div>
         }
         {!loading?<FilteredDishes dishcategories={category} specialDishes={menu} />:null}

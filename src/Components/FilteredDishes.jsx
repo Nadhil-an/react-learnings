@@ -53,13 +53,16 @@ function FilteredDishes(props){
                         {dishCategory}
                     </ul>
                 </div>
-
-                <div>
-                    {filteredDish}
-                </div>
-
-                
             </div>
+
+            <div className='filtereddishesItem flex flex-wrap gap-2'>
+                {filteredDish}
+
+            </div>
+
+
+
+        
              
 
         </div>
