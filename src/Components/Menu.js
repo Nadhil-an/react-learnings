@@ -2,15 +2,17 @@ import {  useEffect, useState } from "react"
 import Hero from "./Hero.js"
 import SpecialDishes from "./SpecialDishes.jsx"
 import FilteredDishes from "./FilteredDishes.jsx"
+import Loader from "./Loader.jsx"
 
 
 function Menu(){
     let [menu,setMenu] = useState([])
     let [category,setCategory] = useState([])
-    let [loading,setLoading] = useState(true)
+    let [loading,setLoading] = useState(false)
 
 
     async function getFoodMenu(){
+        setLoading(true);
         const API_URL = "https://www.themealdb.com/api/json/v1/1/search.php?f=c"
         let response = await fetch(API_URL)
         let data =  await response.json()
@@ -36,10 +38,7 @@ function Menu(){
         
         
         <Hero />
-        {!loading?<SpecialDishes specialDishes={menu} />:
-        <div className="loader">
-            <h2>Loading...</h2>
-        </div>
+        {!loading?<SpecialDishes specialDishes={menu} />:<Loader /> 
         }
         {!loading?<FilteredDishes dishcategories={category} specialDishes={menu} />:null}
         
