@@ -18,19 +18,20 @@ function FilteredDishes(props){
         setActive(category)
         let filteredDishesesAre = allMenu.filter((filteritem)=>{
             return(
-                category === filteritem.strCategory
+                category === filteritem.strCategory 
             )
         }).map((item)=>{
             return(
+                
                 <li >
                 <img src={item.strMealThumb} alt='imges' />
                 <h3>{item.strMeal}</h3>
                  </li>
-
-            )
+        )
         })
         setFiltered(filteredDishesesAre)
     }
+    
 
 
     //show dishes category
@@ -39,6 +40,9 @@ function FilteredDishes(props){
             <li className={ item.strCategory === active ? "active":""} onClick={()=>{showFilterDishesHandler(item.strCategory)}}>{item.strCategory}</li>
         )
     })
+
+
+    //rendering
 
     return(
 
@@ -58,7 +62,14 @@ function FilteredDishes(props){
             </div>
 
             <div className='filtereddishesItem flex flex-wrap gap-2'>
-                {filteredDish}
+                {filteredDish.length !== 0 ? filteredDish:
+                <div className="alert">
+                    <h3>Sorry, No item found</h3>
+                    <h4>Please choose another menu</h4>
+                </div>
+                
+                }
+                
 
             </div>
 
