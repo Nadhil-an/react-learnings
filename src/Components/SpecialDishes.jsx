@@ -1,6 +1,5 @@
 function SpecialDishes(props){
-    console.log(props)
-
+    
     let maxDishes = 8;
     
     let specialMenu = props.specialDishes.map((items,index)=>{
@@ -36,7 +35,6 @@ function SpecialDishes(props){
         
         
         </section>
-
     )
 }
 

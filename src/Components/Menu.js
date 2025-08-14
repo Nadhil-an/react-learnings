@@ -1,4 +1,4 @@
-import { use, useEffect, useState } from "react"
+import {  useEffect, useState } from "react"
 import Hero from "./Hero.js"
 import SpecialDishes from "./SpecialDishes.jsx"
 import FilteredDishes from "./FilteredDishes.jsx"
@@ -34,7 +34,7 @@ function Menu(){
         
         <Hero />
         <SpecialDishes specialDishes={menu} />
-        <FilteredDishes dishcategories={category}/>
+        <FilteredDishes dishcategories={category} specialDishes={menu}   />
 
 
         </>
