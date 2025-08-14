@@ -7,12 +7,15 @@ import FilteredDishes from "./FilteredDishes.jsx"
 function Menu(){
     let [menu,setMenu] = useState([])
     let [category,setCategory] = useState([])
+    let [loading,setLoading] = useState(true)
+
 
     async function getFoodMenu(){
         const API_URL = "https://www.themealdb.com/api/json/v1/1/search.php?f=c"
         let response = await fetch(API_URL)
         let data =  await response.json()
         setMenu(data.meals);
+        setLoading(false)
     }
 
     async function getAllCategories(){
@@ -33,8 +36,14 @@ function Menu(){
         
         
         <Hero />
-        <SpecialDishes specialDishes={menu} />
-        <FilteredDishes dishcategories={category} specialDishes={menu}   />
+        {!loading?<SpecialDishes specialDishes={menu} />:
+        <div className="loader">
+            <h2>Loading</h2>
+        </div>
+        }
+        {!loading?<FilteredDishes dishcategories={category} specialDishes={menu} />:null}
+        
+
 
 
         </>

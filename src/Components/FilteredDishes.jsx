@@ -6,7 +6,7 @@ function FilteredDishes(props){
 
     let [allMenu,setAllMenu] = useState(props.specialDishes)
     let [filteredDish,setFiltered] = useState([])
-
+    
 
 
 
