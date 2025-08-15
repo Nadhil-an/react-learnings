@@ -6,15 +6,20 @@ function FilteredDishes({ singledata, specialDishes, dishcategories }) {
   const [active, setActive] = useState("");
 
   // Handle category filter
+
+  //*****allmenu ninn user click cheytha catergory and database illa same product eduth filtereddishilek store cheyth
   function showFilterDishesHandler(category) {
     setActive(category);
     const filtered = allMenu.filter(item => item.strCategory === category);
-    setFiltered(filtered);
+    setFiltered(filtered); 
   }
 
-  // Dish category buttons
+
+ //********category list ninn user click cheytha food category
+
+  // Dish category buttons(showcasing food categories only)
   const dishCategory = dishcategories.map(item => (
-    <li
+    <li 
       key={item.idCategory}
       className={item.strCategory === active ? "active" : ""}
       onClick={() => showFilterDishesHandler(item.strCategory)}
@@ -22,6 +27,8 @@ function FilteredDishes({ singledata, specialDishes, dishcategories }) {
       {item.strCategory}
     </li>
   ));
+
+
 
   // Decide what to show (default or filtered)
   const dishesToShow = filteredDish.length > 0 ? filteredDish : singledata;
@@ -50,7 +57,7 @@ function FilteredDishes({ singledata, specialDishes, dishcategories }) {
               <h3>{item.strMeal}</h3>
             </li>
           ))
-        ) : (
+        ) : (   
           <div className="alert">
             <h3>Sorry, No item found</h3>
             <h4>Please choose another menu</h4>

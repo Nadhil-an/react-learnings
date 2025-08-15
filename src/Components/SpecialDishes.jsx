@@ -1,8 +1,8 @@
-function SpecialDishes(props){
+function SpecialDishes({specialDishes}){
     
     let maxDishes = 8;
     
-    let specialMenu = props.specialDishes.map((items,index)=>{
+    let specialMenu = specialDishes.map((items,index)=>{
         if(index < maxDishes){
             return(    
                 <li>

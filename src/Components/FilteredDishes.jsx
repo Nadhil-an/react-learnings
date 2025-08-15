@@ -1,22 +1,27 @@
 import {useState} from 'react'
 
 
-function FilteredDishes(props){
-    console.log(props.singledata)
+function FilteredDishes({specialDishes,dishcategories,singledata}){
+    console.log(singledata)
 
 
-    let [allMenu] = useState(props.specialDishes)
+    let [allMenu] = useState(specialDishes)
     let [filteredDish,setFiltered] = useState([])
     let [active,setActive] = useState("")
     
-
-    let singledishes = props.singledata.map((item)=>{
-        return(
+    //default dish
+    let maxIndex =8;
+    let singledishes = singledata.map((item,index)=>{
+        if(index < maxIndex){
+            return(
            <li >
                 <img src={item.strMealThumb} className='br-10' alt='imges' />
-                <h3>{item.strMeal}</h3>
+                <h3 >{item.strMeal}</h3>
            </li>
         )
+
+        }
+        
     })
 
 
@@ -26,26 +31,14 @@ function FilteredDishes(props){
     //show dishes onclick
     function showFilterDishesHandler(category){
         setActive(category)
-        let filteredDishesesAre = allMenu.filter((filteritem)=>{
-            return(
-                category === filteritem.strCategory 
-            )
-        }).map((item)=>{
-            return(
-                
-                <li >
-                <img src={item.strMealThumb} className='br-10' alt='imges' />
-                <h3>{item.strMeal}</h3>
-                 </li>
-        )
-        })
-        setFiltered(filteredDishesesAre)
+        let filteredDishesesAre = allMenu.filter(filteritem=>category === filteritem.strCategory )
+        setFiltered(filteredDishesesAre)        
     }
     
 
 
-    //show dishes category
-    let dishCategory = props.dishcategories.map((item)=>{
+    //show dishes list by category
+    let dishCategory = dishcategories.map((item)=>{
         return(
             <li className={ item.strCategory === active ? "active":""} 
             onClick={()=>{showFilterDishesHandler(item.strCategory)}}>{item.strCategory}</li>
@@ -54,7 +47,6 @@ function FilteredDishes(props){
 
 
     //rendering
-
     return(
 
         <div className="filtered-dishes">
@@ -73,14 +65,25 @@ function FilteredDishes(props){
             </div>
 
             <div className='filtereddishesItem flex flex-wrap gap-2'>
-                {singledishes}
-                {filteredDish.length !== 0 ? filteredDish:
-                <div className="alert">
-                    <h3>Sorry, No item found</h3>
-                    <h4>Please choose another menu</h4>
-                </div>
                 
-                }
+               
+                {active === "" ? (
+                        singledishes
+                    ) : filteredDish.length > 0 ? (
+                        // Category clicked and items found
+                        filteredDish.map(item => (
+                        <li key={item.idMeal}>
+                            <img src={item.strMealThumb} className="br-10" alt="dish" />
+                            <h3>{item.strMeal}</h3>
+                        </li>
+                        ))
+                    ) : (
+                        // Category clicked but no items found
+                        <div className="alert">
+                        <h3>Sorry, No item found</h3>
+                        <h4>Please choose another menu</h4>
+                        </div>
+                    )}
             </div>
 
 
