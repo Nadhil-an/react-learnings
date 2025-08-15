@@ -1,8 +1,10 @@
 import {useState} from 'react'
+import Pagination from './Pagination'
 
 
 function FilteredDishes({specialDishes,dishcategories,singledata}){
     console.log(singledata)
+    
 
 
     let [allMenu] = useState(specialDishes)
@@ -85,6 +87,8 @@ function FilteredDishes({specialDishes,dishcategories,singledata}){
                         </div>
                     )}
             </div>
+
+            <Pagination />
 
 
 

@@ -208,3 +208,22 @@ h2 {
     margin: 0;
   }
 }
+
+.pagination{
+  justify-content: center;
+  margin: 50px 0 0;
+  ul li{
+    width: 30px;
+    height: 30px;
+    border: 1px solid grey;
+    margin: 0 5px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 8px;
+    transition:all ease 0.3s
+
+
+  }
+}
