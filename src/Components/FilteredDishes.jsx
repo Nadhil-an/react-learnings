@@ -1,15 +1,21 @@
-import {useState} from 'react'
+import { useState} from 'react'
 import Pagination from './Pagination'
 
 
 function FilteredDishes({specialDishes,dishcategories,singledata}){
-    console.log(singledata)
+    
     
 
 
     let [allMenu] = useState(specialDishes)
     let [filteredDish,setFiltered] = useState([])
     let [active,setActive] = useState("")
+    let [currentpage,setCurrentpage]=useState(1)
+    let [itemsperpage,setitemsperpage]=useState(4)
+
+    let indexofLastDish  = currentpage * itemsperpage
+    let indexofFirstDish = indexofLastDish - itemsperpage
+    let dishestoshow     = filteredDish.slice(indexofFirstDish,indexofLastDish)
     
     //default dish
     let maxIndex =8;
@@ -33,7 +39,12 @@ function FilteredDishes({specialDishes,dishcategories,singledata}){
     //show dishes onclick
     function showFilterDishesHandler(category){
         setActive(category)
-        let filteredDishesesAre = allMenu.filter(filteritem=>category === filteritem.strCategory )
+        let filteredDishesesAre = allMenu.filter(filteritem=>category === filteritem.strCategory ).map(item => (
+                        <li key={item.idMeal}>
+                            <img src={item.strMealThumb} className="br-10" alt="dish" />
+                            <h3>{item.strMeal}</h3>
+                        </li>
+                        ))
         setFiltered(filteredDishesesAre)        
     }
     
@@ -73,12 +84,8 @@ function FilteredDishes({specialDishes,dishcategories,singledata}){
                         singledishes
                     ) : filteredDish.length > 0 ? (
                         // Category clicked and items found
-                        filteredDish.map(item => (
-                        <li key={item.idMeal}>
-                            <img src={item.strMealThumb} className="br-10" alt="dish" />
-                            <h3>{item.strMeal}</h3>
-                        </li>
-                        ))
+                        dishestoshow
+            
                     ) : (
                         // Category clicked but no items found
                         <div className="alert">
@@ -88,7 +95,7 @@ function FilteredDishes({specialDishes,dishcategories,singledata}){
                     )}
             </div>
 
-            <Pagination />
+            <Pagination filteredDish={filteredDish}/>
 
 
 
