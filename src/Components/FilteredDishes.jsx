@@ -95,7 +95,12 @@ function FilteredDishes({specialDishes,dishcategories,singledata}){
                     )}
             </div>
 
-            <Pagination filteredDish={filteredDish}/>
+            <Pagination 
+            filteredDish={filteredDish}
+            itemsperpage={itemsperpage}
+            setCurrentpage={setCurrentpage}
+            
+            />
 
 
 
