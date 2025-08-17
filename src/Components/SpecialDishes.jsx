@@ -1,3 +1,5 @@
+import CardDish from "./CardDish";
+
 function SpecialDishes({specialDishes}){
     
     let maxDishes = 8;
@@ -5,10 +7,7 @@ function SpecialDishes({specialDishes}){
     let specialMenu = specialDishes.map((items,index)=>{
         if(index < maxDishes){
             return(    
-                <li>
-                    <img src={items.strMealThumb}  />
-                    <h2>{items. strMeal}</h2>
-                </li>
+                <CardDish items={items}/>
         )
         } 
     })
