@@ -11,7 +11,7 @@ function FilteredDishes({specialDishes,dishcategories,singledata}){
     let [filteredDish,setFiltered] = useState([])
     let [active,setActive] = useState("")
     let [currentpage,setCurrentpage]=useState(1)
-    let [itemsperpage,setitemsperpage]=useState(4)
+    let [itemsperpage,  ]=useState(4)
 
     let indexofLastDish  = currentpage * itemsperpage
     let indexofFirstDish = indexofLastDish - itemsperpage
