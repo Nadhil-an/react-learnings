@@ -1,5 +1,6 @@
 import { useState} from 'react'
 import Pagination from './Pagination'
+import CardDish from './CardDish'
 
 
 function FilteredDishes({specialDishes,dishcategories,singledata}){
@@ -19,13 +20,10 @@ function FilteredDishes({specialDishes,dishcategories,singledata}){
     
     //default dish
     let maxIndex =8;
-    let singledishes = singledata.map((item,index)=>{
+    let singledishes = singledata.map((items,index)=>{
         if(index < maxIndex){
             return(
-           <li >
-                <img src={item.strMealThumb} className='br-10' alt='imges' />
-                <h3 >{item.strMeal}</h3>
-           </li>
+           <CardDish items={items} />
         )
 
         }
@@ -39,11 +37,8 @@ function FilteredDishes({specialDishes,dishcategories,singledata}){
     //show dishes onclick
     function showFilterDishesHandler(category){
         setActive(category)
-        let filteredDishesesAre = allMenu.filter(filteritem=>category === filteritem.strCategory ).map(item => (
-                        <li key={item.idMeal}>
-                            <img src={item.strMealThumb} className="br-10" alt="dish" />
-                            <h3>{item.strMeal}</h3>
-                        </li>
+        let filteredDishesesAre = allMenu.filter(filteritem=>category === filteritem.strCategory ).map(items => (
+                        <CardDish items={items}/>
                         ))
         setFiltered(filteredDishesesAre)        
     }
