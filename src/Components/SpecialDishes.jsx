@@ -6,10 +6,12 @@ function SpecialDishes({specialDishes}){
     let [showPopup,setShowPop] = useState(false)
     
     let maxDishes = 8;
-
     function showPopupHandler(){
         setShowPop(true)
     }
+
+   
+   
     
     let specialMenu = specialDishes.map((items,index)=>{
         if(index < maxDishes){
@@ -28,7 +30,7 @@ function SpecialDishes({specialDishes}){
 
     return(
         <section className="special-dishes">
-            {showPopup && <Popup />}
+            {showPopup && <Popup setShowPop={setShowPop}/>}
 
             <div className="container">
                 <div className="special-dishes-content text-center">
