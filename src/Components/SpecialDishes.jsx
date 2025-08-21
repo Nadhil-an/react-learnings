@@ -3,19 +3,22 @@ import CardDish from "./CardDish";
 import Popup from './Popup'
 
 function SpecialDishes({specialDishes}){
+    //making false popup function
     let [showPopup,setShowPop] = useState(false)
+    let [popDishes,setpopDishes] = useState('')
     
-    let maxDishes = 8;
-    function showPopupHandler(){
+    //passing functions to component
+    function showPopupHandler(dishName){
+        setpopDishes(dishName)
         setShowPop(true)
     }
 
    
    
-    
+    let maxDishes = 8;
     let specialMenu = specialDishes.map((items,index)=>{
         if(index < maxDishes){
-            return(    
+            return(                      //function was passed to component
                 <CardDish items={items} showPopupHandler={showPopupHandler}/>
         )
         } 
@@ -30,7 +33,18 @@ function SpecialDishes({specialDishes}){
 
     return(
         <section className="special-dishes">
-            {showPopup && <Popup setShowPop={setShowPop}/>}
+            {showPopup && 
+            //popup Component
+            <Popup 
+            setShowPop={setShowPop}
+            allDishes = {specialDishes}
+            popDishes={popDishes}
+            
+            />
+            
+            
+            
+            }
 
             <div className="container">
                 <div className="special-dishes-content text-center">

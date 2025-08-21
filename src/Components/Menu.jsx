@@ -49,14 +49,17 @@ function Menu(){
     return(
         <>
         
-        
         <Hero />
+        
         {!loading?<SpecialDishes specialDishes={menu} />:<Loader /> 
         }
-        {!loading?<FilteredDishes dishcategories={category} 
+        {!loading?
+
+        //FilteredDishes componet
+        
+        <FilteredDishes dishcategories={category} 
         specialDishes={menu} 
         singledata={singledata}
-        
         />:null}
         
 

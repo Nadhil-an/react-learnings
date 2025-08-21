@@ -1,6 +1,7 @@
 import React from 'react'
 
 function CardDish({items,showPopupHandler}) {
+
   //show pop handler function
    
  
@@ -13,8 +14,10 @@ function CardDish({items,showPopupHandler}) {
 
   return (
 
+  
+
     <li>
-      <a href="javaScript:;" onClick={showPopupHandler}>
+      <a href="javaScript:;" onClick={()=>showPopupHandler(items.strMeal)}>
         <img src={items.strMealThumb}  />
         <h2>{items. strMeal}</h2>
 

@@ -34,7 +34,7 @@ function FilteredDishes({specialDishes,dishcategories,singledata}){
 
 
 
-    //show dishes onclick
+    //onclick category active button
     function showFilterDishesHandler(category){
         setActive(category)
         let filteredDishesesAre = allMenu.filter(filteritem=>category === filteritem.strCategory ).map(items => (
