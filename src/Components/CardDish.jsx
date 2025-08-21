@@ -17,7 +17,7 @@ function CardDish({items,showPopupHandler}) {
   
 
     <li>
-      <a href="javaScript:;" onClick={()=>showPopupHandler(items.strMeal)}>
+      <a onClick={()=>showPopupHandler(items.strMeal)}>
         <img src={items.strMealThumb}  />
         <h2>{items. strMeal}</h2>
 

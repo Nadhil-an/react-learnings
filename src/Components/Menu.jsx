@@ -1,8 +1,10 @@
-import {  useEffect, useState } from "react"
+import React,{  useEffect, useState } from "react"
 import Hero from "./Hero.js"
 import SpecialDishes from "./SpecialDishes.jsx"
 import FilteredDishes from "./FilteredDishes.jsx"
 import Loader from "./Loader.jsx"
+
+export const AllMenuContext = React.createContext()
 
 
 function Menu(){
@@ -50,8 +52,10 @@ function Menu(){
         <>
         
         <Hero />
+
+        <AllMenuContext.Provider value={menu}>
         
-        {!loading?<SpecialDishes specialDishes={menu} />:<Loader /> 
+        {!loading?<SpecialDishes  />:<Loader /> 
         }
         {!loading?
 
@@ -61,10 +65,7 @@ function Menu(){
         specialDishes={menu} 
         singledata={singledata}
         />:null}
-        
-
-
-
+        </AllMenuContext.Provider>
         </>
     )
 }

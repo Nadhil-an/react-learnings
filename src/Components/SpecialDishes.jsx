@@ -1,8 +1,14 @@
-import React,{useState} from "react";
+import {useContext, useState} from "react";
 import CardDish from "./CardDish";
-import Popup from './Popup'
+import Popup from './Popup';
+import {AllMenuContext} from './Menu'
 
 function SpecialDishes({specialDishes}){
+
+    const allMenu = useContext(AllMenuContext)
+
+
+
     //making false popup function
     let [showPopup,setShowPop] = useState(false)
     let [popDishes,setpopDishes] = useState('')
@@ -16,7 +22,7 @@ function SpecialDishes({specialDishes}){
    
    
     let maxDishes = 8;
-    let specialMenu = specialDishes.map((items,index)=>{
+    let specialMenu = allMenu.map((items,index)=>{
         if(index < maxDishes){
             return(                      //function was passed to component
                 <CardDish items={items} showPopupHandler={showPopupHandler}/>
@@ -37,7 +43,7 @@ function SpecialDishes({specialDishes}){
             //popup Component
             <Popup 
             setShowPop={setShowPop}
-            allDishes = {specialDishes}
+            allDishes = {allMenu}
             popDishes={popDishes}
             
             />
