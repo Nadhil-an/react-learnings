@@ -18,7 +18,6 @@ function Popup({ setShowPop, popDishes }) {
           <h2>{item.strMeal}</h2>
           <p>{item.strInstructions}</p>
           <ul className="dish-ingredients flex">
-            {/* ✅ Render only non-empty ingredients dynamically */}
             {Array.from({ length: 20 }, (_, i) => item[`strIngredient${i + 1}`])
               .filter(Boolean)
               .map((ingredient, i) => (

@@ -320,9 +320,9 @@ a{
 
 .dish-ingredients {
   margin-bottom: 22px;
-  display: flex;           /* ✅ keep them in a row */
-  flex-wrap: wrap;         /* ✅ allow wrapping when too many */
-  gap: 10px;               /* ✅ spacing between pills */
+  display: flex;           
+  flex-wrap: wrap;         
+  gap: 10px;               
 }
 
 .dish-ingredients li {
@@ -330,8 +330,8 @@ a{
   padding: 8px 12px;
   border-radius: 32px;
   font-size: 14px;
-  max-width: 200px;        /* ✅ limit max width */
-  overflow: hidden;        /* ✅ hide overflow */
-  text-overflow: ellipsis; /* ✅ add "..." if too long */
-  white-space: nowrap;     /* ✅ keep in one line */
+  max-width: 200px;        
+  overflow: hidden;       
+  text-overflow: ellipsis; 
+  white-space: nowrap;    
 }

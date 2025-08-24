@@ -3,26 +3,19 @@ import Hero from "./Hero.js"
 import SpecialDishes from "./SpecialDishes.jsx"
 import FilteredDishes from "./FilteredDishes.jsx"
 import Loader from "./Loader.jsx"
+import AllMenu from "./AllMenuContext.jsx"
 
 export const MenuContext     = React.createContext()
 
 
 
 function Menu(){
-    let [menu,setMenu] = useState([])
+    
     let [category,setCategory] = useState([])
     let [loading,setLoading] = useState(false)
     let [singledata,setSingleFoodData] = useState([])
 
-    //fetch all foodMenu
-    async function getFoodMenu(){
-        setLoading(true);
-        const API_URL = "https://www.themealdb.com/api/json/v1/1/search.php?f=c"
-        let response = await fetch(API_URL)
-        let data =  await response.json()
-        setMenu(data.meals);
-        setLoading(false)
-    }
+   
     //fetch food by category
     async function getAllCategories(){
         const API_URL = "https://www.themealdb.com/api/json/v1/1/categories.php"
@@ -54,14 +47,16 @@ function Menu(){
         
         <Hero />
 
-        <MenuContext.Provider value={{menu,category,singledata}}>
+        <AllMenu>
             
         
         {!loading?<SpecialDishes  />:<Loader />}
         {!loading?<FilteredDishes />:null}
 
+        </AllMenu>
+
             
-        </MenuContext.Provider>
+        
         </>
     )
 }
