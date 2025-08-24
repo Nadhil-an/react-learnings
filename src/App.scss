@@ -320,11 +320,18 @@ a{
 
 .dish-ingredients {
   margin-bottom: 22px;
-  li{
-    background: white;
-    padding: 8px 12px;
-    border-radius: 32px;
-    font-size: 14px;
-    margin-right: 12px;
-  }
+  display: flex;           /* ✅ keep them in a row */
+  flex-wrap: wrap;         /* ✅ allow wrapping when too many */
+  gap: 10px;               /* ✅ spacing between pills */
+}
+
+.dish-ingredients li {
+  background: white;
+  padding: 8px 12px;
+  border-radius: 32px;
+  font-size: 14px;
+  max-width: 200px;        /* ✅ limit max width */
+  overflow: hidden;        /* ✅ hide overflow */
+  text-overflow: ellipsis; /* ✅ add "..." if too long */
+  white-space: nowrap;     /* ✅ keep in one line */
 }

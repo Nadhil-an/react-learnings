@@ -4,7 +4,8 @@ import SpecialDishes from "./SpecialDishes.jsx"
 import FilteredDishes from "./FilteredDishes.jsx"
 import Loader from "./Loader.jsx"
 
-export const AllMenuContext = React.createContext()
+export const MenuContext     = React.createContext()
+
 
 
 function Menu(){
@@ -53,19 +54,14 @@ function Menu(){
         
         <Hero />
 
-        <AllMenuContext.Provider value={menu}>
+        <MenuContext.Provider value={{menu,category,singledata}}>
+            
         
-        {!loading?<SpecialDishes  />:<Loader /> 
-        }
-        {!loading?
+        {!loading?<SpecialDishes  />:<Loader />}
+        {!loading?<FilteredDishes />:null}
 
-        //FilteredDishes componet
-        
-        <FilteredDishes dishcategories={category} 
-        specialDishes={menu} 
-        singledata={singledata}
-        />:null}
-        </AllMenuContext.Provider>
+            
+        </MenuContext.Provider>
         </>
     )
 }
