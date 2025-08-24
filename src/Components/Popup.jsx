@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
-import { MenuContext } from './Menu'
+import { AllMenuContext } from './AllMenuContext'
 
 function Popup({ setShowPop, popDishes }) {
   // ✅ Destructure menu from context (instead of assigning whole object)
-  const { menu } = useContext(MenuContext)
+  const { menu } = useContext(AllMenuContext)
 
   // ✅ Safe check: ensure menu is always an array
   let popDish = (menu || [])

@@ -1,11 +1,15 @@
 import React, {useEffect, useState} from "react"
+import Loader from "./Loader.jsx"
 
-const AllmenuContext = React.createContext()
+export const AllMenuContext = React.createContext()
 
 
 
-const Allmenu =(props)=>{
+export const AllMenu =(props)=>{
     let [menu,setMenu] = useState([])
+    let [loading,setLoading] = useState(false)
+    let [category,setCategory] = useState([])
+    let [singledata,setSingleFoodData] = useState([])
      //fetch all foodMenu
     async function getFoodMenu(){
         setLoading(true);
@@ -16,16 +20,34 @@ const Allmenu =(props)=>{
         setLoading(false)
     }
 
+    //fetch food by category
+    async function getAllCategories(){
+        const API_URL = "https://www.themealdb.com/api/json/v1/1/categories.php"
+        let response = await fetch(API_URL)
+        let categorydata = await response.json()
+        setCategory(categorydata.categories)
+    }
+
+      //fetch single food
+    async function singlefood(){
+        const API_URL = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Beef"
+        let response = await fetch(API_URL)
+        let singlefooddata = await response.json()
+        setSingleFoodData(singlefooddata.meals)    
+    }
+
     useEffect(()=>{
-        getFoodMenu();
+        getFoodMenu()
+        getAllCategories()
+         singlefood()
     },[])
     return(
-        <AllmenuContext.Provider value={}>
-            {props.children}
+        <AllMenuContext.Provider value={{menu,category,singledata}}>
+            
+            {!loading?props.children:<Loader />}
 
-        </AllmenuContext.Provider>
+        </AllMenuContext.Provider>
 
     )
 }
 
-export default Allmenu

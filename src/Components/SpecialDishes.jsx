@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
 import CardDish from "./CardDish";
 import Popup from "./Popup";
-import { MenuContext } from "./Menu";
+import { AllMenuContext } from "./AllMenuContext.jsx";
 
 function SpecialDishes() {
-  const { menu } = useContext(MenuContext);
+  const { menu } = useContext(AllMenuContext);
 
   let [showPopup, setShowPop] = useState(false);
   let [popDishes, setPopDishes] = useState("");
