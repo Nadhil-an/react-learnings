@@ -13,17 +13,27 @@ function FilteredDishes() {
           setSingleFoodData(singlefooddata.meals)    
       }
 
+       //fetch food by category
+      async function getAllCategories(){
+        const API_URL = "https://www.themealdb.com/api/json/v1/1/categories.php"
+        let response = await fetch(API_URL)
+        let categorydata = await response.json()
+        setCategory(categorydata.categories)
+    }
+
       useEffect(()=>{
               
                singlefood()
+               getAllCategories()
           },[])
-  const { category, menu } = useContext(AllMenuContext);
+  const {  menu } = useContext(AllMenuContext);
 
   let [filteredDish, setFiltered] = useState([]);
   let [active, setActive] = useState("");
   let [currentpage, setCurrentpage] = useState(1);
   let [itemsperpage] = useState(4);
   let [singledata,setSingleFoodData] = useState([])
+  let [category,setCategory] = useState([])
 
   let indexofLastDish = currentpage * itemsperpage;
   let indexofFirstDish = indexofLastDish - itemsperpage;

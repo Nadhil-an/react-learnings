@@ -8,7 +8,7 @@ export const AllMenuContext = React.createContext()
 export const AllMenu =(props)=>{
     let [menu,setMenu] = useState([])
     let [loading,setLoading] = useState(false)
-    let [category,setCategory] = useState([])
+    
     
      //fetch all foodMenu
     async function getFoodMenu(){
@@ -20,17 +20,11 @@ export const AllMenu =(props)=>{
         setLoading(false)
     }
 
-    //fetch food by category
-    async function getAllCategories(){
-        const API_URL = "https://www.themealdb.com/api/json/v1/1/categories.php"
-        let response = await fetch(API_URL)
-        let categorydata = await response.json()
-        setCategory(categorydata.categories)
-    }
+   
 
     useEffect(()=>{
               getFoodMenu()
-              getAllCategories()
+              
               
           },[])
 
@@ -38,7 +32,7 @@ export const AllMenu =(props)=>{
 
     
     return(
-        <AllMenuContext.Provider value={{menu,category}}>
+        <AllMenuContext.Provider value={{menu}}>
             
             {!loading?props.children:<Loader />}
 
