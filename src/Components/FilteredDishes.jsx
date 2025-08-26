@@ -1,15 +1,29 @@
-import { useContext, useState } from "react";
+import { useContext, useState,useEffect } from "react";
 import Pagination from "./Pagination";
 import CardDish from "./CardDish";
 import { AllMenuContext } from "./AllMenuContext.jsx";
 
 function FilteredDishes() {
-  const { category, singledata, menu } = useContext(AllMenuContext);
+
+        //fetch single food
+      async function singlefood(){
+          const API_URL = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Beef"
+          let response = await fetch(API_URL)
+          let singlefooddata = await response.json()
+          setSingleFoodData(singlefooddata.meals)    
+      }
+
+      useEffect(()=>{
+              
+               singlefood()
+          },[])
+  const { category, menu } = useContext(AllMenuContext);
 
   let [filteredDish, setFiltered] = useState([]);
   let [active, setActive] = useState("");
   let [currentpage, setCurrentpage] = useState(1);
   let [itemsperpage] = useState(4);
+  let [singledata,setSingleFoodData] = useState([])
 
   let indexofLastDish = currentpage * itemsperpage;
   let indexofFirstDish = indexofLastDish - itemsperpage;
@@ -20,6 +34,11 @@ function FilteredDishes() {
   let singledishes = (singledata || [])
     .slice(0, maxIndex)
     .map((items) => <CardDish key={items.idMeal} items={items} />);
+
+
+
+
+
 
   // onclick category active button
   function showFilterDishesHandler(cat) {

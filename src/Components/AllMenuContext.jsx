@@ -9,7 +9,7 @@ export const AllMenu =(props)=>{
     let [menu,setMenu] = useState([])
     let [loading,setLoading] = useState(false)
     let [category,setCategory] = useState([])
-    let [singledata,setSingleFoodData] = useState([])
+    
      //fetch all foodMenu
     async function getFoodMenu(){
         setLoading(true);
@@ -28,21 +28,17 @@ export const AllMenu =(props)=>{
         setCategory(categorydata.categories)
     }
 
-      //fetch single food
-    async function singlefood(){
-        const API_URL = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Beef"
-        let response = await fetch(API_URL)
-        let singlefooddata = await response.json()
-        setSingleFoodData(singlefooddata.meals)    
-    }
-
     useEffect(()=>{
-        getFoodMenu()
-        getAllCategories()
-         singlefood()
-    },[])
+              getFoodMenu()
+              getAllCategories()
+              
+          },[])
+
+
+
+    
     return(
-        <AllMenuContext.Provider value={{menu,category,singledata}}>
+        <AllMenuContext.Provider value={{menu,category}}>
             
             {!loading?props.children:<Loader />}
 
