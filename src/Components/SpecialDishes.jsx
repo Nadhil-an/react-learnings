@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import CardDish from "./CardDish";
 import Popup from "./Popup";
 import { AllMenuContext } from "./AllMenuContext.jsx";
+import AddToCart from "./AddToCart.jsx";
 
 function SpecialDishes() {
   const { menu } = useContext(AllMenuContext);
@@ -33,6 +34,7 @@ function SpecialDishes() {
       )}
 
       <div className="container">
+        <AddToCart />
         <div className="special-dishes-content text-center">
           <h2>Our Special Dishes</h2>
         </div>
