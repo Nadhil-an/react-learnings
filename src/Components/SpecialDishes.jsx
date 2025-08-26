@@ -9,10 +9,15 @@ function SpecialDishes() {
 
   let [showPopup, setShowPop] = useState(false);
   let [popDishes, setPopDishes] = useState("");
+  let [AddCart,setAddCart]=useState("")
 
   function showPopupHandler(dishName) {
     setPopDishes(dishName);
     setShowPop(true);
+  }
+
+  function orderNowHanlder(image){
+    setAddCart(image)
   }
 
   let maxDishes = 8;
@@ -30,11 +35,11 @@ function SpecialDishes() {
   return (
     <section className="special-dishes">
       {showPopup && (
-        <Popup setShowPop={setShowPop} popDishes={popDishes} />
+        <Popup setShowPop={setShowPop} popDishes={popDishes}  orderNowHanlder={orderNowHanlder}/>
       )}
 
       <div className="container">
-        <AddToCart />
+        <AddToCart AddCart={AddCart}/>
         <div className="special-dishes-content text-center">
           <h2>Our Special Dishes</h2>
         </div>

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { AllMenuContext } from './AllMenuContext'
 
-function Popup({ setShowPop, popDishes }) {
+function Popup({ setShowPop, popDishes,orderNowHanlder }) {
   // ✅ Destructure menu from context (instead of assigning whole object)
   const { menu } = useContext(AllMenuContext)
 
@@ -24,6 +24,11 @@ function Popup({ setShowPop, popDishes }) {
                 <li key={i}>{ingredient}</li>
               ))}
           </ul>
+
+
+          
+          <button onClick={()=>{orderNowHanlder(item.strMealThumb)}}>Order Now</button>
+        <h5 className="popup-close" onClick={closePopupHandler}>Close</h5>
         </div>
       )
     })
@@ -36,10 +41,7 @@ function Popup({ setShowPop, popDishes }) {
     <div className="popup">
       <div className="popup-content">
         {popDish}
-        <button>Order Now</button>
-        <h5 className="popup-close" onClick={closePopupHandler}>
-          Close
-        </h5>
+
       </div>
     </div>
   )
