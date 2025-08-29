@@ -9,15 +9,21 @@ function SpecialDishes() {
 
   let [showPopup, setShowPop] = useState(false);
   let [popDishes, setPopDishes] = useState("");
-  let [AddCart,setAddCart]=useState("")
+  let [AddCart,setAddCart]=useState([])
 
   function showPopupHandler(dishName) {
     setPopDishes(dishName);
     setShowPop(true);
   }
 
-  function orderNowHanlder(image){
-    setAddCart(image)
+  function orderNowHanlder(image,name){
+    setAddCart([
+      {
+        img:image,
+        name:name
+
+      }
+    ])
   }
 
   let maxDishes = 8;

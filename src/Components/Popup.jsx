@@ -2,10 +2,10 @@ import React, { useContext } from 'react'
 import { AllMenuContext } from './AllMenuContext'
 
 function Popup({ setShowPop, popDishes,orderNowHanlder }) {
-  // ✅ Destructure menu from context (instead of assigning whole object)
+  
   const { menu } = useContext(AllMenuContext)
 
-  // ✅ Safe check: ensure menu is always an array
+  
   let popDish = (menu || [])
     .filter((dish) => dish.strMeal === popDishes)
     .map((item) => {
@@ -27,7 +27,7 @@ function Popup({ setShowPop, popDishes,orderNowHanlder }) {
 
 
           
-          <button onClick={()=>{orderNowHanlder(item.strMealThumb)}}>Order Now</button>
+          <button onClick={()=>{orderNowHanlder(item.strMealThumb,item.strMeal)}}>Order Now</button>
         <h5 className="popup-close" onClick={closePopupHandler}>Close</h5>
         </div>
       )
