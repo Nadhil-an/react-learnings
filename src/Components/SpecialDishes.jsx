@@ -18,7 +18,7 @@ function SpecialDishes() {
 
   function orderNowHanlder(image,name){
     setAddCart([
-      ...AddCart,
+      ...AddCart, 
       {
         img:image,
         name:name

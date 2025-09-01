@@ -1,7 +1,10 @@
 import React from "react"
+import {BrowserRouter as Router,Route,Routes} from 'react-router-dom'
 import Hero from "./Hero.js"
 import SpecialDishes from "./SpecialDishes.jsx"
 import FilteredDishes from "./FilteredDishes.jsx"
+import Header from './Header.jsx'
+import Checkout from './Checkout.jsx'
 import {AllMenu} from "./AllMenuContext.jsx"
 
 
@@ -10,15 +13,24 @@ function Menu(){
 
     return(
         <>
-        
-        <Hero />
+        <Router>
+            <Header />
+            <Hero />
 
-        <AllMenu>
-        
-        <SpecialDishes  />
-        <FilteredDishes   />
+            <Routes>
+                {/*Home Route */}
+                <Route   path="/" element={
+                    <AllMenu>
+                        <SpecialDishes />
+                        <FilteredDishes />
+                    </AllMenu>
+                }/>
 
-        </AllMenu>
+
+                <Route path="/checkout" element={<Checkout />}/>
+            </Routes>
+        </Router>
+        
 
             
         
