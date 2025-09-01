@@ -8,6 +8,7 @@ import Checkout from './Checkout.jsx'
 import {AllMenu} from "./AllMenuContext.jsx"
 
 
+
 function Menu(){
     
 
@@ -23,7 +24,10 @@ function Menu(){
                     <AllMenu>
                         <SpecialDishes />
                         <FilteredDishes />
+                        
+                        
                     </AllMenu>
+                    
                 }/>
 
 

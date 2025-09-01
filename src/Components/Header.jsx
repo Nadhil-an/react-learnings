@@ -1,18 +1,19 @@
 import React from 'react'
+import {Link} from "react-router-dom"
 
 function Header() {
   return (
     <header className='flex flex-center flex-between'>
-        <a href="" className='logo'>
+        <Link to="/" className='logo'>
             Food Diary
-        </a>
+        </Link>
         <nav>
             <ul className='flex'>
                 <li>
-                    <a href="">Home</a>
+                    <Link to="/">Home</Link>
                 </li>
                 <li>
-                    <a href="">Checkout</a>
+                    <Link to="checkout">Checkout</Link>
                 </li>
             </ul>
         </nav>
