@@ -15,12 +15,17 @@ const AppProvider = () =>{
 
     }
 
-    const [state,dispatch] = useReducer(reducer,initialState)
+    let [state,dispatch] = useReducer(reducer,initialState)
 
 
     return(
+        <DispatchContext.Providerrovider value={dispatch}>
+            <StateContext.Provider value={state}>
+
+            </StateContext.Provider>
+        </DispatchContext.Providerrovider>
 
     )
 }
 
-export {AppProvider}
+export {AppProvider,DispatchContext,StateContext}
