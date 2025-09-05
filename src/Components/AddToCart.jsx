@@ -1,21 +1,37 @@
+import { useContext } from "react"
+import { StateContext } from "../context/AppProvider"
+
+
+
+
+
+
 const AddToCart = ({AddCart}) =>{
-    let addedProduct = AddCart.map((product)=>{
-        return(
-            <div>
-                <img src={product.img} alt="" />
-                <h5>{product.name}</h5>
-
-
-            </div>
-        )
-    })    
+    const {cartItems}= useContext(StateContext)
+    console.log("add to cart:",cartItems)
+   
+    
 
     return(
         <div className="add-to-cart-wrapper">
         <div className="add-to-cart-item">
             
-            {addedProduct}
+            {cartItems.map((item)=>{
+                return(
+                    <div>
+                    <img src={item.image} alt="" />
+                    <h5>{item.title}</h5>
+                    </div>
+
+                )
+                
             
+
+
+            })}
+            {/* <img src={cartPackage.cartItems[1]} alt="" />
+            <h5>{cartPackage.cartItems[0]}</h5>
+             */}
             
         </div>
         </div>

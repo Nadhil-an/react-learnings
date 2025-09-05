@@ -1,31 +1,40 @@
-import { useReducer,useContext, createContext } from "react"
+import { useReducer, createContext } from "react"
 
 const DispatchContext = createContext()
-const StateContext    =  createContext()
+const StateContext = createContext()
 
-const AppProvider = () =>{
+const AppProvider = ({ children }) => {
+  const initialState = {
+    cartItems: []
+  }
 
-    const initialState = {
-        cartItems : []
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case "orderNowHandler":
+        return {
+          ...state,
+          cartItems: [
+            ...state.cartItems, // keep old items
+            {
+              title: action.payload.title,
+              image: action.payload.img
+            }
+          ]
+        }
+      default:
+        return state
     }
+  }
 
-    
+  let [state, dispatch] = useReducer(reducer, initialState)
 
-    const reducer = (state,action) =>{
-
-    }
-
-    let [state,dispatch] = useReducer(reducer,initialState)
-
-
-    return(
-        <DispatchContext.Providerrovider value={dispatch}>
-            <StateContext.Provider value={state}>
-
-            </StateContext.Provider>
-        </DispatchContext.Providerrovider>
-
-    )
+  return (
+    <DispatchContext.Provider value={dispatch}>
+      <StateContext.Provider value={state}>
+        {children}
+      </StateContext.Provider>
+    </DispatchContext.Provider>
+  )
 }
 
-export {AppProvider,DispatchContext,StateContext}
+export { AppProvider, DispatchContext, StateContext }

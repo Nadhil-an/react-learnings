@@ -1,9 +1,12 @@
 import React, { useContext } from 'react'
 import { AllMenuContext } from './AllMenuContext'
+import { DispatchContext } from '../context/AppProvider'
 
 function Popup({ setShowPop, popDishes,orderNowHanlder }) {
   
   const { menu } = useContext(AllMenuContext)
+  const  dispatch  = useContext(DispatchContext)
+ 
 
   
   let popDish = (menu || [])
@@ -27,7 +30,11 @@ function Popup({ setShowPop, popDishes,orderNowHanlder }) {
 
 
           
-          <button onClick={()=>{orderNowHanlder(item.strMealThumb,item.strMeal)}}>Order Now</button>
+          <button onClick={()=>{
+            dispatch({
+              type : "orderNowHandler",payload:{title:item.strMeal,img:item.strMealThumb}
+            })
+          }}>Order Now</button>
         <h5 className="popup-close" onClick={closePopupHandler}>Close</h5>
         </div>
       )
