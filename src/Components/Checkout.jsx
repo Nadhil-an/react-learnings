@@ -4,13 +4,21 @@ import { useContext } from "react"
 
 const Checkout = () =>{
 
-    const checkoutItems = useContext(StateContext)
-    console.log("this is checkout page:",checkoutItems)
+    const { cartItems } = useContext(StateContext)
+    
     return(
         <div>
 
-            <img src={checkoutItems.cartItems[1]} alt=""  />
-            <h2>{checkoutItems.cartItems[0]}</h2>
+        {cartItems.map((item)=>{
+                        return(
+                            <div>
+                            <img src={item.image} alt="" />
+                            <h5>{item.title}</h5>
+                            </div>
+
+                        )
+
+                    })}
         <h2>This is checkout page</h2>
         <UseRed />
         </div>
